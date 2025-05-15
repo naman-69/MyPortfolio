@@ -1,0 +1,86 @@
+<!-- <section class="contact" id="contact">
+  
+  <h2 class="heading"><i class="fas fa-headset"></i> Get in <span>Touch</span></h2>
+
+  <div class="container">
+    <div class="content">
+      <div class="image-box">
+        <img draggable="false" src="../../../assets/contactus.jpg" alt="">
+      </div>
+    <form id="contact-form">
+      
+      <div class="form-group">
+        <div class="field">
+          <input type="text" name="name" placeholder="Name" required>
+          <i class='fas fa-user'></i>
+        </div>
+        <div class="field">
+          <input type="email" name="email" placeholder="Email" required>
+          <i class='fas fa-envelope'></i>
+        </div>
+        <div class="message">
+        <textarea placeholder="Message" name="message" required></textarea>
+        <i class="fas fa-comment-dots"></i>
+        </div>
+        </div>
+      <div class="button-area">
+        <button type="submit">
+          Submit <i class="fa fa-paper-plane"></i></button>
+      </div>
+    </form>
+  </div>
+  </div>
+</section> -->
+
+
+
+<section class="contact" id="contact">
+  <h2 class="heading"><i class="fas fa-headset"></i> Get in <span>Touch</span></h2>
+
+  <div class="container">
+    <div class="content">
+      <div class="image-box">
+        <img draggable="false" src="../../../assets/contactus.jpg" alt="">
+      </div>
+      
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" id="contact-form">
+        <div class="form-group">
+          <div class="field">
+            <input type="text" formControlName="name" placeholder="Name" 
+              [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+            <i class='fas fa-user'></i>
+            <div *ngIf="submitted && f['name'].errors" class="error-message">
+              <div *ngIf="f['name'].errors['required']">Name is required</div>
+            </div>
+          </div>
+          
+          <div class="field">
+            <input type="email" formControlName="email" placeholder="Email" 
+              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+            <i class='fas fa-envelope'></i>
+            <div *ngIf="submitted && f['email'].errors" class="error-message">
+              <div *ngIf="f['email'].errors['required']">Email is required</div>
+              <div *ngIf="f['email'].errors['email']">Enter a valid email</div>
+            </div>
+          </div>
+          
+          <div class="message">
+            <textarea formControlName="message" placeholder="Message" 
+              [ngClass]="{ 'is-invalid': submitted && f['message'].errors }"></textarea>
+            <i class="fas fa-comment-dots"></i>
+            <div *ngIf="submitted && f['message'].errors" class="error-message">
+              <div *ngIf="f['message'].errors['required']">Message is required</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="button-area">
+          <button type="submit" [disabled]="loading">
+            Send
+          </button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</section>
