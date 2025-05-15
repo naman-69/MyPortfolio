@@ -192,4 +192,9 @@ section {
   .home .content p span {
     font-size: 2.2rem;
   }
+  .home .content {
+    flex: 1 1 40rem;
+    padding-top: 4rem;
+    z-index: 1;
+    }
 }
